@@ -1,3 +1,5 @@
+import React from 'react';
+
 const H2 = ({ content, ...props }) => {
 	return (
 		<h2

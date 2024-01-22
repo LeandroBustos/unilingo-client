@@ -1,6 +1,6 @@
 # unilingo-client
 
-A form that insert basic data from users of mindco in Firestore database, synchronized in a BigQuery dataset using Firebase Functions and visualized in a dataStudio report embeded in the page that updates its records frecuently, without the need of a traditional backend architecture.
+A page that lets the user to search a youtube video, render the info, download the thumbnail, a 15 seconds of audio sample, translation of that audio sample and text-to-speech of that translation
 
 ## Environment Variables
 
@@ -13,13 +13,13 @@ Clone the project
 **SSH**
 
 ```bash
-  git clone git@github.com:LeandroBustos/mindco-firebase.git
+  git clone git@github.com:LeandroBustos/unilingo-client.git
 ```
 
 **HTTP**
 
 ```bash
-  git clone https://github.com/LeandroBustos/mindco-firebase.git
+  git clone https://github.com/LeandroBustos/unilingo-client.git
 ```
 
 Go to the project directory
@@ -42,7 +42,7 @@ Start the server
 
 ## Live app
 
-TL;DR here is the live app
+TL;DR here is the live app https://unilingo-client.vercel.app/
 
 ## Tech Stack
 
