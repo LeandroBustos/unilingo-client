@@ -13,7 +13,7 @@ const VideoContainer = () => {
     const [video, setVideo] = useState(null)
     const [translation, setTranslation] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
-    const [isUpdating, setIsUpdating] = useState(true)
+    const [isUpdating, setIsUpdating] = useState(false)
     const [youtubeUrl, setYoutubeUrl] = useState('');
     const [fetch, setFetch] = useState(false);
     const [error, setError] = useState(null);
