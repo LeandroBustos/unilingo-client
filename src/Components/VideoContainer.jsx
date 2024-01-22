@@ -64,13 +64,13 @@ const VideoContainer = () => {
 
     const handleUpdateClick = async () => {
         try {
+            setIsUpdating(true)
             const response = await axios.get(process.env.REACT_APP_API_URL+`/youtube/video/${extractVideoId(youtubeUrl)}/info`);
             console.log(response.data);
             const newVideo = { ...video }
             newVideo.view_count = response.data.view_count
             newVideo.latest_comment = response.data.latest_comment
             setVideo(newVideo)
-            setIsUpdating(true)
         } catch (error) {
             setErrorUpdate('Error updating');
             console.error(error);
