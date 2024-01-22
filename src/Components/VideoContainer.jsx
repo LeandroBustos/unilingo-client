@@ -13,6 +13,7 @@ const VideoContainer = () => {
     const [video, setVideo] = useState(null)
     const [translation, setTranslation] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [isUpdating, setIsUpdating] = useState(true)
     const [youtubeUrl, setYoutubeUrl] = useState('');
     const [fetch, setFetch] = useState(false);
     const [error, setError] = useState(null);
@@ -69,9 +70,12 @@ const VideoContainer = () => {
             newVideo.view_count = response.data.view_count
             newVideo.latest_comment = response.data.latest_comment
             setVideo(newVideo)
+            setIsUpdating(true)
         } catch (error) {
             setErrorUpdate('Error updating');
             console.error(error);
+        } finally {
+            setIsUpdating(false)
         }
     };
 
@@ -147,8 +151,8 @@ const VideoContainer = () => {
                             <div className="stats-group-container" style={{ boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)', borderRadius: '8px', padding: '20px', backgroundColor: '#ffffff', marginBottom: '20px' }}>
                                 <h3 style={{ marginBottom: '10px' }}>{`Views: ${video.view_count}`}</h3>
                                 <h3>{`Last comment: ${video.latest_comment || "Not available"}`}</h3>
-                                <button onClick={handleUpdateClick} disabled={isLoading} style={{ backgroundColor: '#282c34', color: 'white', padding: '10px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
-                                    {isLoading ? 'Updating...' : 'Update comment and views'}
+                                <button onClick={handleUpdateClick} disabled={isUpdating} style={{ backgroundColor: '#282c34', color: 'white', padding: '10px', border: 'none', borderRadius: '4px', cursor: 'pointer' }}>
+                                    {isUpdating ? 'Updating...' : 'Update comment and views'}
                                 </button>
                                 {errorUpdate && <p style={{ color: 'red', marginTop: '10px' }}>{errorUpdate}</p>}
                             </div>
