@@ -42,14 +42,13 @@ const VideoContainer = () => {
             try {
                 let translationData = null
                 const response = await axios.get(process.env.REACT_APP_API_URL + `/youtube/video/${id}/info`);
-                console.log(response.data, response.data.translation)
                 if (response.data.translation) {
                     translationData = response.data.translation
                 } else {
                     await axios.post(process.env.REACT_APP_API_URL + `/youtube/video/${id}/transcript/audio`);
                     const responseTranslate = await axios.get(process.env.REACT_APP_API_URL + `/youtube/video/${id}/translation`);
                     translationData = responseTranslate.data.translation
-                    await axios.patch(process.env.REACT_APP_API_URL + `/youtube/video/${id}/translation`, {translation});
+                    await axios.patch(process.env.REACT_APP_API_URL + `/youtube/video/${id}/translation`, {translation: translationData});
                 }
                 setVideo(response.data)
                 setTranslation(translationData)
